@@ -79,6 +79,8 @@ GEM
       origin (~> 2.2)
       tzinfo (>= 0.3.37)
     multi_json (1.11.2)
+    nokogiri (1.6.7.2-x64-mingw32)
+      mini_portile2 (~> 2.0.0.rc2)
     nokogiri (1.6.7.2-x86-mingw32)
       mini_portile2 (~> 2.0.0.rc2)
     origin (2.2.0)
@@ -158,6 +160,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
 
 PLATFORMS
+  x64-mingw32
   x86-mingw32
 
 DEPENDENCIES
