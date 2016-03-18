@@ -7,6 +7,18 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
+    #flash-messages
+      - flash.each do |key, value|
+        - if key == 'success'
+          = render partial: 'layouts/messages', locals: {type: 'success', value: value}
+        - elsif key == 'alert'
+          = render partial: 'layouts/messages', locals: {type: 'warning', value: value}
+        - elsif key == 'notice'
+          = render partial: 'layouts/messages', locals: {type: 'info', value: value}
+        - elsif key == 'error'
+          = render partial: 'layouts/messages', locals: {type: 'danger', value: value}
+        - else
+          = render partial: 'layouts/messages', locals: {type: 'danger', value: value}
   	= render 'layouts/header'
     #content
       = yield
