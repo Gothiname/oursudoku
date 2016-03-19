@@ -19,7 +19,6 @@ html
           = render partial: 'layouts/messages', locals: {type: 'danger', value: value}
         - else
           = render partial: 'layouts/messages', locals: {type: 'danger', value: value}
-  	= render 'layouts/header'
     = render 'layouts/menu'
     #content
       = yield

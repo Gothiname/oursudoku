@@ -1,9 +1,0 @@
-#header
-	#title-header = link_to 'Oursudoku', root_path
-	#login-header
-		- if user_signed_in?
-			= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
-		- else
-			= link_to 'Sign in', new_user_session_path, class: 'btn btn-success'
-			|  
-			= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary'
