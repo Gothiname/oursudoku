@@ -11,3 +11,18 @@ nav.navbar.navbar-default.text-center
 			ul.nav.navbar-nav
 				li class=(current_page?(root_path) ? 'active' : '')
 					a href=root_path Home
+				li.dropdown
+					a.dropdown-toggle href='#' data-toggle='dropdown' role='button' aria={haspopup: 'true', expanded: 'false'}
+						| My account
+						span.caret
+					ul.dropdown-menu
+						- if user_signed_in?
+							li class=(current_page?(edit_user_registration_path) ? 'active' : '')
+								= link_to 'Edit', edit_user_registration_path
+							li
+								= link_to 'Sign out', destroy_user_session_path, method: :delete
+						- else
+							li class=(current_page?(new_user_session_path) ? 'active' : '')
+								= link_to 'Sign in', new_user_session_path
+							li class=(current_page?(new_user_registration_path) ? 'active' : '')
+								= link_to 'Sign up', new_user_registration_path
