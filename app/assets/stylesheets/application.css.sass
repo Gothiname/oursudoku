@@ -16,22 +16,25 @@
 
 @import "bootstrap-sprockets"
 @import "bootstrap"
+@import "_variables"
+
+html
+    position: relative
+    min-height: 100%
 
 body
-	width: 100%
-	margin: 0 auto
-	padding: 0
-	position: relative
+    margin: 0 0 100px
+    color: $primary-font-color
 
 #content
-	width: 80%
-	margin: 0 auto
-	padding: 20px
+    width: 80%
+    margin: 0 auto
+    padding: 20px
 
 #flash-messages
-	min-width: 30%
-	position: absolute
-	z-index: 9999
-	left: 50%
-	transform: translateX(-50%)
-	text-align: center
+    min-width: 30%
+    position: absolute
+    z-index: 9999
+    left: 50%
+    transform: translateX(-50%)
+    text-align: center
