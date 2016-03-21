@@ -15,3 +15,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+//If you are using Bootstrap version 3, include this line somewhere before your first notice
+PNotify.prototype.options.styling = "bootstrap3";
