@@ -10,13 +10,8 @@ nav.navbar.navbar-default.text-center
 		#menu.collapse.navbar-collapse
 			ul.nav.navbar-nav.navbar-right
 				- if user_signed_in?
-					li.dropdown
-						a.dropdown-toggle href='#' data-toggle='dropdown' role='button' aria={haspopup: 'true', expanded: 'false'}
-							| My account
-							span.caret
-						ul.dropdown-menu
-							li class=(current_page?(edit_user_registration_path) ? 'active' : '')
-								= link_to 'Edit', edit_user_registration_path
+					li class=(current_page?(edit_user_registration_path) ? 'active' : '')
+						= link_to 'My account', edit_user_registration_path, class: 'mr-5'
 					= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-danger navbar-btn'
 				- else
 					= link_to 'Sign in', new_user_session_path, class: 'btn btn-success navbar-btn mr-5'
