@@ -1,0 +1,9 @@
+#flash-messages
+  - flash.each do |key, value|
+    javascript:
+      $(function(){
+        new PNotify({
+          text: "#{value}",
+          type: "#{key}"
+        });
+      });
