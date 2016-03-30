@@ -1,2 +1,31 @@
 h1 Core#index
 p Find me in app/views/core/index.html.slim
+br
+| Class Sudoku
+br
+br
+- @sudoku.get_grid.each do |line|
+	= line.inspect
+	br
+br
+| Check Lines = 
+= @sudoku.check_lines.inspect
+br
+| Check Cols = 
+= @sudoku.check_cols.inspect
+br
+| Check Squares = 
+= @sudoku.check_squares.inspect
+br
+| Is_valid = 
+= @sudoku.is_valid.inspect
+br
+| Is_filled = 
+= @sudoku.is_filled.inspect
+br
+br
+| Class SudokuManager
+br
+br
+| Solve = 
+= @sudoku_manager.solve
