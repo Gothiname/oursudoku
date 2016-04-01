@@ -1,13 +1,14 @@
 class SudokuManager
-	attr_reader :sudoku_weights
+	attr_reader :sudoku_solver
 
-	def initialize(grid='')
-		@sudoku = Sudoku.new grid
-		@sudoku_weights = SudokuWeight.new @sudoku
+	def initialize
 	end
 
-	def solve
-		return false unless @sudoku.is_valid && @sudoku.is_filled
+	def solve(sudoku=nil)
+		return false if sudoku == nil
+		@sudoku_solver = SudokuBacktracking.new sudoku
+		# @sudoku_solver.solve
+		return false unless sudoku.is_valid && sudoku.is_filled
 		true
 	end
 end

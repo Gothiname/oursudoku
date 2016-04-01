@@ -38,11 +38,14 @@ br
 | Class SudokuManager
 br
 br
-| Solve = 
-= @sudoku_manager.solve
-br
 | Weights = 
 br
-- @sudoku_manager.sudoku_weights.grid_weights.each do |line|
+- @sudoku_manager.sudoku_solver.sudoku_weights.grid_weights.each do |line|
+	= line.inspect
+	br
+br
+| Order cell = 
+br
+- @sudoku_manager.sudoku_solver.cell_order.each do |line|
 	= line.inspect
 	br
