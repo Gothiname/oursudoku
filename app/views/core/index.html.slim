@@ -4,6 +4,17 @@ br
 | Class Sudoku
 br
 br
+| Profondeur = 
+= @sudoku.depth
+br
+| Side length = 
+= @sudoku.side_length
+br
+| Possibilities = 
+= @sudoku.possibilities
+br
+| Grid = 
+br
 - @sudoku.get_grid.each do |line|
 	= line.inspect
 	br
@@ -22,10 +33,10 @@ br
 br
 | Is_filled = 
 = @sudoku.is_filled.inspect
-br
-br
-| Class SudokuManager
-br
-br
-| Solve = 
-= @sudoku_manager.solve
+/ br
+/ br
+/ | Class SudokuManager
+/ br
+/ br
+/ | Solve = 
+/ = @sudoku_manager.solve

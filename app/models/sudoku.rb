@@ -1,29 +1,47 @@
 class Sudoku
-	def sudoku_numbers
-		[1, 2, 3, 4, 5, 6, 7, 8, 9]
+	attr_reader :depth
+	attr_reader :possibilities
+	attr_reader :side_length
+
+	def authorized_depth?
+		if depth < 2 || depth > 4
+			return false
+		end
+		true
 	end
 
-	def initialize(grid='')
+	def init_possibilities
+		@possibilities = []
+		for i in 0..(@side_length - 1)
+			@possibilities[i] = ((i < 9 ? 49 : 56) + i).chr
+		end
+	end
+
+	def initialize(grid='', depth=3)
+		raise 'Depth not authorized' unless depth <= 4 && depth >= 2
 		@grid = nil
-		raise 'Grille non valide' unless initialize_grid_from_string grid
+		@depth = depth
+		@side_length = @depth ** 2
+		init_possibilities
+		raise 'Invalid grid' unless initialize_grid_from_string grid
 	end
 
-	def is_numeric(grid_string='')
-		/\A\d+\z/.match(grid_string)
+	def is_good_character(grid_string='')
+		/\A[#{@possibilities}|0]+\z/.match(grid_string)
 	end
 
 	def initialize_grid_from_string(grid_string='')
-		if grid_string.length == 81 && is_numeric(grid_string)
+		if grid_string.length == @side_length ** 2 && is_good_character(grid_string)
 			@grid = []
-			line = 0
-			col = 0
+			i = 0
+			j = 0
 			grid_string.split('').each do |cell|
-				@grid[line] = [] if col == 0
-				@grid[line][col] = cell.to_i
-				col += 1
-				if col == 9
-					col = 0
-					line += 1
+				@grid[i] = [] if j == 0
+				@grid[i][j] = cell
+				j += 1
+				if j == @side_length
+					j = 0
+					i += 1
 				end
 			end
 			return true
@@ -32,7 +50,7 @@ class Sudoku
 	end
 
 	def check_cell(cell, numbers)
-		if cell != 0
+		if cell != '0'
 			if numbers.include? cell
 				numbers.delete cell
 			else
@@ -43,39 +61,39 @@ class Sudoku
 	end
 
 	def check_line(i)
-		numbers = sudoku_numbers
-		(0..8).each do |j|
+		numbers = @possibilities.dup
+		for j in 0..(@possibilities.length - 1)
 			return false unless check_cell @grid[i][j], numbers
 		end
 		true
 	end
 
 	def check_lines
-		(0..8).each do |i|
+		for i in 0..(@possibilities.length - 1)
 			return false unless check_line i
 		end
 		true
 	end
 
 	def check_col(j)
-		numbers = sudoku_numbers
-		(0..8).each do |i|
+		numbers = @possibilities.dup
+		for i in 0..(@possibilities.length - 1)
 			return false unless check_cell @grid[i][j], numbers
 		end
 		true
 	end
 
 	def check_cols
-		(0..8).each do |j|
+		for j in 0..(@possibilities.length - 1)
 			return false unless check_col j
 		end
 		true
 	end
 
 	def check_square(i, j)
-		numbers = sudoku_numbers
-		(0..2).each do |k|
-			(0..2).each do |l|
+		numbers = @possibilities.dup
+		for k in 0..(@depth - 1)
+			for l in 0..(@depth - 1)
 				return false unless check_cell @grid[i + k][j + l], numbers
 			end
 		end
@@ -83,14 +101,10 @@ class Sudoku
 	end
 
 	def check_squares
-		i = 0
-		while i <= 6
-			j = 0
-			while j <= 6
-				return false unless check_square i, j
-				j += 3
+		for i in 0..(@depth - 1)
+			for j in 0..(@depth - 1)
+				return false unless check_square i * @depth, j * @depth
 			end
-			i += 3
 		end
 		true
 	end
@@ -101,9 +115,9 @@ class Sudoku
 	end
 
 	def is_filled
-		(0..8).each do |i|
-			(0..8).each do |j|
-				return false unless @grid[i][j] != 0
+		for i in 0..(@possibilities.length - 1)
+			for j in 0..(@possibilities.length - 1)
+				return false unless @grid[i][j] != '0'
 			end
 		end
 		true
@@ -115,5 +129,9 @@ class Sudoku
 
 	def get_cell(i, j)
 		@grid[i][j]
+	end
+
+	def set_cell(i, j, value)
+		@grid[i][j] = value
 	end
 end
