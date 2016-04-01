@@ -3,13 +3,6 @@ class Sudoku
 	attr_reader :possibilities
 	attr_reader :side_length
 
-	def authorized_depth?
-		if depth < 2 || depth > 4
-			return false
-		end
-		true
-	end
-
 	def init_possibilities
 		@possibilities = []
 		for i in 0..(@side_length - 1)
