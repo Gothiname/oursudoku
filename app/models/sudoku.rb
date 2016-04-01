@@ -116,6 +116,31 @@ class Sudoku
 		true
 	end
 
+	def can_be_in_line(i, character)
+		for j in 0..(@possibilities.length - 1)
+			return false if @grid[i][j] == character
+		end
+		true
+	end
+
+	def can_be_in_col(j, character)
+		for i in 0..(@possibilities.length - 1)
+			return false if @grid[i][j] == character
+		end
+		true
+	end
+
+	def can_be_in_square(i, j, character)
+		line_start = (i / @depth).to_i * @depth
+		col_start = (j / @depth).to_i * @depth
+		for k in line_start..(line_start + @depth - 1)
+			for l in col_start..(col_start + @depth - 1)
+				return false if @grid[k][l] == character
+			end
+		end
+		true
+	end
+
 	def get_grid
 		@grid
 	end
@@ -126,5 +151,9 @@ class Sudoku
 
 	def set_cell(i, j, value)
 		@grid[i][j] = value
+	end
+
+	def cell_is_empty(i, j)
+		@grid[i][j] == '0'
 	end
 end

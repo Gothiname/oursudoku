@@ -33,10 +33,16 @@ br
 br
 | Is_filled = 
 = @sudoku.is_filled.inspect
-/ br
-/ br
-/ | Class SudokuManager
-/ br
-/ br
-/ | Solve = 
-/ = @sudoku_manager.solve
+br
+br
+| Class SudokuManager
+br
+br
+| Solve = 
+= @sudoku_manager.solve
+br
+| Weights = 
+br
+- @sudoku_manager.sudoku_weights.grid_weights.each do |line|
+	= line.inspect
+	br
