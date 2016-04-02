@@ -1,42 +1,42 @@
-h1 Core#index
-p Find me in app/views/core/index.html.slim
-br
-| Class Sudoku
-br
-br
-| Profondeur = 
-= @sudoku_vierge.depth
-br
-| Side length = 
-= @sudoku_vierge.side_length
-br
-| Possibilities = 
-= @sudoku_vierge.possibilities
-br
-| Grid = 
-br
-- @sudoku_vierge.get_grid.each do |line|
-	= line.inspect
-	br
-br
-| Check Lines = 
-= @sudoku_vierge.check_lines.inspect
-br
-| Check Cols = 
-= @sudoku_vierge.check_cols.inspect
-br
-| Check Squares = 
-= @sudoku_vierge.check_squares.inspect
-br
-| Is_valid = 
-= @sudoku_vierge.is_valid.inspect
-br
-| Is_filled = 
-= @sudoku_vierge.is_filled.inspect
-br
-br
-| Class SudokuManager
-br
+h1 Oursudoku is in development
+p You can test it if you want but they are many bugs unsolved for now
+/ br
+/ | Class Sudoku
+/ br
+/ br
+/ | Profondeur = 
+/ = @sudoku_vierge.depth
+/ br
+/ | Side length = 
+/ = @sudoku_vierge.side_length
+/ br
+/ | Possibilities = 
+/ = @sudoku_vierge.possibilities
+/ br
+/ | Grid = 
+/ br
+/ - @sudoku_vierge.get_grid.each do |line|
+/ 	= line.inspect
+/ 	br
+/ br
+/ | Check Lines = 
+/ = @sudoku_vierge.check_lines.inspect
+/ br
+/ | Check Cols = 
+/ = @sudoku_vierge.check_cols.inspect
+/ br
+/ | Check Squares = 
+/ = @sudoku_vierge.check_squares.inspect
+/ br
+/ | Is_valid = 
+/ = @sudoku_vierge.is_valid.inspect
+/ br
+/ | Is_filled = 
+/ = @sudoku_vierge.is_filled.inspect
+/ br
+/ br
+/ | Class SudokuManager
+/ br
 / br
 / | Weights = 
 / br
@@ -50,8 +50,8 @@ br
 / 	= line.inspect
 / 	br
 / br
-| Grid solved = 
-br
-- @sudoku_manager.sudoku_solver.sudoku_solved.get_grid.each do |line|
-	= line.inspect
-	br
+/ | Grid solved = 
+/ br
+/ - @sudoku_manager.sudoku_solver.sudoku_solved.get_grid.each do |line|
+/ 	= line.inspect
+/ 	br
