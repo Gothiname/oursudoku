@@ -141,6 +141,11 @@ class Sudoku
 		true
 	end
 
+	def can_be_in_cell(i, j, character)
+		return true if (can_be_in_line i, character) && (can_be_in_col j, character) && (can_be_in_square i, j, character)
+		false
+	end
+
 	def get_grid
 		@grid
 	end
