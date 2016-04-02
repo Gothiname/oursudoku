@@ -17,6 +17,7 @@ class Sudoku
 		@side_length = @depth ** 2
 		init_possibilities
 		raise 'Invalid grid' unless initialize_grid_from_string grid
+		raise 'Invalid grid' unless is_valid
 	end
 
 	def is_good_character(grid_string='')

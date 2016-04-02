@@ -1,0 +1,13 @@
+- if @depth.blank?
+	= form_tag '#' do |f|
+		= label_tag 'Depth'
+		= number_field_tag 'depth', 3, in: 2..4
+		= submit_tag 'Set'
+- unless @depth.blank?
+	= form_tag '/sudoku/solved' do |f|
+		= hidden_field_tag 'depth', @depth
+		- (0...@depth**2).each do |i|
+			- (0...@depth**2).each do |j|
+	    		= text_field_tag "#{i}-#{j}", nil, maxlength: 1, size: 1
+		    br
+		= submit_tag 'Solve'

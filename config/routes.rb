@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {sessions: "user/sessions"}
 
+  get 'sudoku/solver', to: 'sudoku#index'
+  post 'sudoku/solver', to: 'sudoku#index'
+
+  post 'sudoku/solved', to: 'sudoku#solved'
+
   get '/', to: 'core#index'
 
   root to: 'core#index'
