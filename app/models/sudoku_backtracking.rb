@@ -1,7 +1,5 @@
 class SudokuBacktracking
-	attr_reader :sudoku_weights
 	attr_reader :sudoku_solved
-	attr_reader :cell_order
 
 	def initialize(sudoku)
 		@sudoku_solved = sudoku
