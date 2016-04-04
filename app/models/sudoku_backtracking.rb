@@ -29,10 +29,11 @@ class SudokuBacktracking
 
 	def fill_grid cell_order
 		return true if cell_order.length == 0 && @sudoku_solved.is_filled && @sudoku_solved.is_valid
-		if cell_order.take(1)[0][:weight] == 1
-			return true if fill_cell cell_order.take(1)[0][:coord][0], cell_order.take(1)[0][:coord][1], 0, cell_order
+		cell = cell_order.take(1)[0]
+		if cell[:weight] == 1
+			return true if fill_cell cell[:coord][0], cell[:coord][1], 0, cell_order
 		else
-			return true if fill_cell cell_order.take(1)[0][:coord][0], cell_order.take(1)[0][:coord][1], 1
+			return true if fill_cell cell[:coord][0], cell[:coord][1], 1
 		end
 		false
 	end

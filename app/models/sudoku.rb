@@ -2,10 +2,11 @@ class Sudoku
 	attr_reader :depth
 	attr_reader :possibilities
 	attr_reader :side_length
+	attr_reader :grid
 
 	def init_possibilities
 		@possibilities = []
-		for i in 0..(@side_length - 1)
+		for i in 0...@side_length
 			@possibilities[i] = ((i < 9 ? 49 : 56) + i).chr
 		end
 	end
@@ -140,10 +141,6 @@ class Sudoku
 	def can_be_in_cell(i, j, character)
 		return true if (can_be_in_line i, character) && (can_be_in_col j, character) && (can_be_in_square i, j, character)
 		false
-	end
-
-	def get_grid
-		@grid
 	end
 
 	def get_cell(i, j)
