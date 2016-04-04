@@ -17,9 +17,9 @@ class SudokuWeight
 
 	def initialize_grid_weights
 		@grid_weights = []
-		for i in 0..(@sudoku.possibilities.length - 1)
+		for i in 0...@sudoku.possibilities.length
 			@grid_weights[i] = []
-			for j in 0..(@sudoku.possibilities.length - 1)
+			for j in 0...@sudoku.possibilities.length
 				@grid_weights[i][j] = get_weight i, j
 			end
 		end

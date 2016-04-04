@@ -56,14 +56,14 @@ class Sudoku
 
 	def check_line(i)
 		numbers = @possibilities.dup
-		for j in 0..(@possibilities.length - 1)
+		for j in 0...@possibilities.length
 			return false unless check_cell @grid[i][j], numbers
 		end
 		true
 	end
 
 	def check_lines
-		for i in 0..(@possibilities.length - 1)
+		for i in 0...@possibilities.length
 			return false unless check_line i
 		end
 		true
@@ -71,14 +71,14 @@ class Sudoku
 
 	def check_col(j)
 		numbers = @possibilities.dup
-		for i in 0..(@possibilities.length - 1)
+		for i in 0...@possibilities.length
 			return false unless check_cell @grid[i][j], numbers
 		end
 		true
 	end
 
 	def check_cols
-		for j in 0..(@possibilities.length - 1)
+		for j in 0...@possibilities.length
 			return false unless check_col j
 		end
 		true
@@ -86,8 +86,8 @@ class Sudoku
 
 	def check_square(i, j)
 		numbers = @possibilities.dup
-		for k in 0..(@depth - 1)
-			for l in 0..(@depth - 1)
+		for k in 0...@depth
+			for l in 0...@depth
 				return false unless check_cell @grid[i + k][j + l], numbers
 			end
 		end
@@ -95,8 +95,8 @@ class Sudoku
 	end
 
 	def check_squares
-		for i in 0..(@depth - 1)
-			for j in 0..(@depth - 1)
+		for i in 0...@depth
+			for j in 0...@depth
 				return false unless check_square i * @depth, j * @depth
 			end
 		end
@@ -109,8 +109,8 @@ class Sudoku
 	end
 
 	def is_filled
-		for i in 0..(@possibilities.length - 1)
-			for j in 0..(@possibilities.length - 1)
+		for i in 0...@possibilities.length
+			for j in 0...@possibilities.length
 				return false unless @grid[i][j] != '0'
 			end
 		end
@@ -118,14 +118,14 @@ class Sudoku
 	end
 
 	def can_be_in_line(i, character)
-		for j in 0..(@possibilities.length - 1)
+		for j in 0...@possibilities.length
 			return false if @grid[i][j] == character
 		end
 		true
 	end
 
 	def can_be_in_col(j, character)
-		for i in 0..(@possibilities.length - 1)
+		for i in 0...@possibilities.length
 			return false if @grid[i][j] == character
 		end
 		true
@@ -134,8 +134,8 @@ class Sudoku
 	def can_be_in_square(i, j, character)
 		line_start = (i / @depth).to_i * @depth
 		col_start = (j / @depth).to_i * @depth
-		for k in line_start..(line_start + @depth - 1)
-			for l in col_start..(col_start + @depth - 1)
+		for k in line_start...(line_start + @depth)
+			for l in col_start...(col_start + @depth)
 				return false if @grid[k][l] == character
 			end
 		end

@@ -11,8 +11,8 @@ class SudokuBacktracking
 		sudoku_weights = SudokuWeight.new @sudoku_solved
 		cell_order = []
 		k = 0
-		for i in 0..(@sudoku_solved.possibilities.length - 1)
-			for j in 0..(@sudoku_solved.possibilities.length - 1)
+		for i in 0...@sudoku_solved.possibilities.length
+			for j in 0...@sudoku_solved.possibilities.length
 				if sudoku_weights.grid_weights[i][j] > -1
 					cell_order[k] = {weight: sudoku_weights.grid_weights[i][j], coord: [i, j]}
 					k += 1
