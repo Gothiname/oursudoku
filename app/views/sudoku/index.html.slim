@@ -4,7 +4,7 @@
 		= number_field_tag 'depth', 3, in: 2..4
 		= submit_tag 'Set'
 - unless @depth.blank?
-	= form_tag '/sudoku/solved' do |f|
+	= form_tag sudoku_solved_path do |f|
 		= hidden_field_tag 'depth', @depth
 		- (0...@depth**2).each do |i|
 			- (0...@depth**2).each do |j|

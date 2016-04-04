@@ -17,13 +17,17 @@ class Sudoku
 		false
 	end
 
+	def self.authorized_depth?(depth)
+		return depth <= 4 && depth >= 2
+	end
+
 	def error(msg)
 		@error_msg = msg
 	end
 
 	def initialize(grid='', depth=3)
 		@error_msg = nil
-		return error 'Depth not authorized' unless depth <= 4 && depth >= 2
+		return error 'Depth not authorized' unless Sudoku.authorized_depth? depth
 		@grid = nil
 		@depth = depth
 		@side_length = @depth ** 2

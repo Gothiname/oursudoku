@@ -1,6 +1,7 @@
 class SudokuController < ApplicationController
   def index
     unless params[:depth].blank?
+      return redirect_to sudoku_solver_path unless Sudoku.authorized_depth? params[:depth].to_i
       @depth = params[:depth].to_i
     end
   end
@@ -21,7 +22,7 @@ class SudokuController < ApplicationController
     @sudoku = Sudoku.new (construct_string_params depth), depth
     if @sudoku.has_error?
       flash[:error] = @sudoku.error_msg
-      return redirect_to sudoku_solver_path
+      return redirect_to sudoku_solver_path(depth: depth)
     end
     sudoku_manager = SudokuManager.new
     sudoku_manager.solve @sudoku
