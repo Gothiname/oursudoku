@@ -27,15 +27,10 @@ class Sudoku
 	def initialize_grid_from_string(grid_string='')
 		if grid_string.length == @side_length ** 2 && is_good_character(grid_string)
 			@grid = []
-			i = 0
-			j = 0
-			grid_string.split('').each do |cell|
-				@grid[i] = [] if j == 0
-				@grid[i][j] = cell
-				j += 1
-				if j == @side_length
-					j = 0
-					i += 1
+			for i in 0...@side_length
+				for j in 0...@side_length
+					@grid[i] = [] if j == 0
+					@grid[i][j] = grid[(i * @side_length) + j]
 				end
 			end
 			return true
