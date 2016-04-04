@@ -10,7 +10,7 @@ class SudokuWeight
 		return -1 unless @sudoku.cell_is_empty i, j
 		weight = 0
 		@sudoku.possibilities.each do |character|
-			weight += 1 if (@sudoku.can_be_in_line i, character) && (@sudoku.can_be_in_col j, character) && (@sudoku.can_be_in_square i, j, character)
+			weight += 1 if @sudoku.can_be_in_cell i, j, character
 		end
 		weight
 	end
