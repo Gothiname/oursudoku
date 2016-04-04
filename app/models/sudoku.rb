@@ -3,6 +3,7 @@ class Sudoku
 	attr_reader :possibilities
 	attr_reader :side_length
 	attr_reader :grid
+	attr_reader :error_msg
 
 	def init_possibilities
 		@possibilities = []
@@ -11,14 +12,24 @@ class Sudoku
 		end
 	end
 
+	def has_error?
+		return true unless error_msg.blank?
+		false
+	end
+
+	def error(msg)
+		@error_msg = msg
+	end
+
 	def initialize(grid='', depth=3)
-		raise 'Depth not authorized' unless depth <= 4 && depth >= 2
+		@error_msg = nil
+		return error 'Depth not authorized' unless depth <= 4 && depth >= 2
 		@grid = nil
 		@depth = depth
 		@side_length = @depth ** 2
 		init_possibilities
-		raise 'Invalid grid' unless initialize_grid_from_string grid
-		raise 'Invalid grid' unless is_valid
+		return error 'Invalid grid' unless initialize_grid_from_string grid
+		return error 'Invalid grid' unless is_valid
 	end
 
 	def is_good_character(grid_string='')
