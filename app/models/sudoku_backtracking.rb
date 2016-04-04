@@ -21,8 +21,7 @@ class SudokuBacktracking
 	end
 
 	def solve
-		cell_order = get_cell_order
-		fill_grid cell_order
+		fill_grid get_cell_order
 	end
 
 	def fill_grid cell_order
