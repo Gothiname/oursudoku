@@ -30,7 +30,7 @@ class Sudoku
 			for i in 0...@side_length
 				for j in 0...@side_length
 					@grid[i] = [] if j == 0
-					@grid[i][j] = grid[(i * @side_length) + j]
+					@grid[i][j] = grid_string[(i * @side_length) + j]
 				end
 			end
 			return true
