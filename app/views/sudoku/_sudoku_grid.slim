@@ -1,0 +1,7 @@
+.sudoku-container
+	.sudoku-grid class=("depth-#{depth}")
+		= hidden_field_tag 'depth', depth
+		- (0...depth**2).each do |i|
+			.line
+				- (0...depth**2).each do |j|
+		    		= text_field_tag "#{i}-#{j}", nil, maxlength: 1, size: 1, class: "cell text-center"
