@@ -1,3 +1,5 @@
+@import "_breakpoints"
+
 $font-color: #3B1201
 $grid-outer-color: #58230E
 $grid-inner-color: #D79A82
@@ -72,6 +74,9 @@ $grid-inner-border: 1px solid $grid-inner-color
                 &:last-child
                     border-right: none
 
+                @include breakpoint(tablet)
+                    color: red
+
             &:nth-of-type(1)
                 .cell
                     border-top: none
@@ -80,4 +85,3 @@ $grid-inner-border: 1px solid $grid-inner-color
                     border-bottom: none
 
         +dynamic-inner-sudoku
-
