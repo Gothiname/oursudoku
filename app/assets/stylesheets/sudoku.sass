@@ -64,6 +64,7 @@ $grid-inner-border: 1px solid $grid-inner-color
                 color: transparent
                 text-shadow: 0 0 0 $font-color
                 font-weight: bold
+                font-size: 26px
 
                 &:focus
                     outline: none
@@ -74,14 +75,19 @@ $grid-inner-border: 1px solid $grid-inner-color
                 &:last-child
                     border-right: none
 
-                @include breakpoint(tablet)
-                    color: red
-
             &:nth-of-type(1)
                 .cell
                     border-top: none
             &:last-child
                 .cell
                     border-bottom: none
+
+        // Responsiveness
+        &.depth-3
+            .cell
+                @include mobile
+                    font-size: 15px
+                @include tablet
+                    color: yellow
 
         +dynamic-inner-sudoku
