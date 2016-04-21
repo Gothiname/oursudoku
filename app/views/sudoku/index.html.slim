@@ -4,6 +4,7 @@
 		= number_field_tag 'depth', 3, in: 2..4
 		= submit_tag 'Set'
 - unless @depth.blank?
-	= form_tag sudoku_solved_path do |f|
+	= form_tag sudoku_solved_path, class: 'sudoku-form' do |f|
 		= render partial: 'sudoku_grid', locals: {depth: @depth}
-		= submit_tag 'Solve'
+		.text-center
+			= submit_tag 'Solve', class: 'btn btn-lg btn-primary'

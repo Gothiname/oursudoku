@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {sessions: "user/sessions"}
 
+  # Sudoku routes
   get 'sudoku/solver', to: 'sudoku#index'
   post 'sudoku/solver', to: 'sudoku#index'
-
   post 'sudoku/solved', to: 'sudoku#solved'
+  # !Sudoku routes
 
   get '/', to: 'core#index'
 
