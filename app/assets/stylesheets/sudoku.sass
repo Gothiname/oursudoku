@@ -79,6 +79,8 @@ $grid-inner-border: 1px solid $grid-inner-color
                 .cell
                     border-top: none
             &:last-child
+                display: inline-block // Ugly patch to not focus last cell if outside click...
+
                 .cell
                     border-bottom: none
 
