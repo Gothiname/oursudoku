@@ -13,21 +13,21 @@ $grid-inner-border: 1px solid $grid-inner-color
         &.depth-#{$i}
             $y: 1
             @while $y < $i
-                .cell:nth-of-type(#{$i*$y})
+                .SudokuCell:nth-of-type(#{$i*$y})
                     border-right-color: $grid-outer-color
-                .cell:nth-of-type(#{$i*$y+1})
+                .SudokuCell:nth-of-type(#{$i*$y+1})
                     border-left-color: $grid-outer-color
-                .line:nth-of-type(#{$i*$y})
-                    .cell
+                .SudokuLine:nth-of-type(#{$i*$y})
+                    .SudokuCell
                         border-bottom-color: $grid-outer-color
-                .line:nth-of-type(#{$i*$y+1})
-                    .cell
+                .SudokuLine:nth-of-type(#{$i*$y+1})
+                    .SudokuCell
                         border-top-color: $grid-outer-color
                 $y: $y + 1
 
-            .line
+            .SudokuLine
                 height: calc(100% / #{$i*$i})
-                .cell
+                .SudokuCell
                     width: calc(100% / #{$i*$i})
 
         $i: $i + 1
@@ -44,17 +44,17 @@ $grid-inner-border: 1px solid $grid-inner-color
         display: block
         padding-top: 100%
 
-    .sudoku-grid
+    .SudokuGrid
         border: $grid-outer-border
         border-radius: 3px
         position: absolute
         width: 100%
         height: 100%
 
-        .line
+        .SudokuLine
             width: 100%
 
-            .cell
+            .SudokuCell
                 display: block
                 float: left
                 cursor: pointer
@@ -76,17 +76,17 @@ $grid-inner-border: 1px solid $grid-inner-color
                     border-right: none
 
             &:nth-of-type(1)
-                .cell
+                .SudokuCell
                     border-top: none
             &:last-child
                 display: inline-block // Ugly patch to not focus last cell if outside click...
 
-                .cell
+                .SudokuCell
                     border-bottom: none
 
         // Responsiveness
         &.depth-3
-            .cell
+            .SudokuCell
                 @include mobile
                     font-size: 15px
 
@@ -95,3 +95,7 @@ $grid-inner-border: 1px solid $grid-inner-color
 .sudoku-form
     .sudoku-container
         margin-bottom: 20px
+
+.SudokuSolver
+    .SudokuSolverParams
+        margin-bottom: 10px
