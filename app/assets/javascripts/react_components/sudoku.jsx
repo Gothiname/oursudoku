@@ -1,3 +1,5 @@
+import Formsy from 'formsy-react';
+
 var SudokuCell = React.createClass({
   render: function() {
     return (
@@ -71,7 +73,7 @@ var SudokuSolverParams = React.createClass({
   }
 });
 
-var SudokuSolver = React.createClass({
+SudokuSolver = React.createClass({
   getInitialState: function() {
     return {depth: 3};
   },

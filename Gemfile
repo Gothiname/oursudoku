@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # React and JSX
 gem 'react-rails', '~> 1.6.0'
+# To be able to use require() calls for including plain javascript files as well as node modules
+gem "browserify-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
