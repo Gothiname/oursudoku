@@ -31,5 +31,7 @@ module SudokuApp
 
     # To use sass as the default extension when generating views
     config.sass.preferred_syntax = :sass
+
+    config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 react ] ]"
   end
 end

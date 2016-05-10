@@ -15,12 +15,12 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 
-//= require react
 //= require react_ujs
-
 
 //= require_tree .
 
+var React = window.React = global.React = require('react');
+var ReactDOM = window.ReactDOM = global.ReactDOM = require('react-dom');
 
 //If you are using Bootstrap version 3, include this line somewhere before your first notice
 PNotify.prototype.options.styling = "bootstrap3";
