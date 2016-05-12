@@ -9,7 +9,9 @@ const Input = React.createClass({
   // setValue() will set the value of the component, which in
   // turn will validate it and the rest of the form
   changeValue(event) {
-    this.setValue(event.currentTarget[this.props.type === 'checkbox' ? 'checked' : 'value']);
+    debugger;
+    var value = event.currentTarget['value']
+    this.setValue(value);
   },
   render() {
 
@@ -27,10 +29,11 @@ const Input = React.createClass({
 
     return (
       <div className={className}>
-        <label htmlFor={this.props.name}>{this.props.title}</label>
-        <input
+        <label htmlFor={this.props.name}>{this.props.label}</label>
+        <input {...this.props}
           type={this.props.type || 'text'}
           name={this.props.name}
+          label={null}
           onChange={this.changeValue}
           value={this.getValue()}
           checked={this.props.type === 'checkbox' && this.getValue() ? 'checked' : null}

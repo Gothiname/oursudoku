@@ -1,6 +1,7 @@
 var React = require('react');
 import Formsy from 'formsy-react';
 import Input from './input.jsx';
+import './formsyValidations.js';
 
 var SudokuCell = React.createClass({
   render: function() {
@@ -50,39 +51,22 @@ var SudokuSolverParams = React.createClass({
   getInitialState: function() {
       return {
         depth: this.props.depth,
-        canSubmit: false
+        canSubmit: true
       };
   },
-  handleDepthChange: function(e) {
-    this.setState({depth: e.target.value});
-  },
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var depth = this.state.depth;
-    if (!depth || depth < 2 || depth > 4)
-      return;
-    this.props.onParamsSubmit({depth: depth});
+  handleSubmit: function(params) {
+    this.props.onParamsSubmit(params);
   },
   render: function() {
     return (
-      <Formsy.Form onValidSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="depth">Depth</label>
-          <Input type="number" name="depth" id="depth" min="2" max="4"
-            value={this.state.depth}
-            onChange={this.handleDepthChange} />
-        </div>
+      <Formsy.Form className="SudokuSolverParams form-inline text-center"
+        onValidSubmit={this.handleSubmit}>
+        <Input type="number" name="depth" id="depth" min={2} max={4}
+          label="Depth"
+          value={this.state.depth}
+          validations="isMoreThan:1"/>
         <button type="submit" className="btn btn-default">Set</button>
       </Formsy.Form>
-      /*<form className="SudokuSolverParams form-inline text-center" onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="depth">Depth</label>
-          <Input type="number" name="depth" id="depth" min="2" max="4"
-            value={this.state.depth}
-            onChange={this.handleDepthChange} />
-        </div>
-        <button type="submit" className="btn btn-default">Set</button>
-      </form>*/
     );
   }
 });
