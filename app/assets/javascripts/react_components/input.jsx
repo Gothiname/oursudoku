@@ -9,7 +9,6 @@ const Input = React.createClass({
   // setValue() will set the value of the component, which in
   // turn will validate it and the rest of the form
   changeValue(event) {
-    debugger;
     var value = event.currentTarget['value']
     this.setValue(value);
   },
@@ -31,6 +30,7 @@ const Input = React.createClass({
       <div className={className}>
         <label htmlFor={this.props.name}>{this.props.label}</label>
         <input {...this.props}
+          className='form-control'
           type={this.props.type || 'text'}
           name={this.props.name}
           label={null}

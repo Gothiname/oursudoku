@@ -39,7 +39,8 @@ gem "browserify-rails"
 gem 'slim-rails'
 gem 'mongoid'
 gem 'devise'
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'rails-assets-tether', '>= 1.1.0' # For bootstrap tooltips/popovers
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

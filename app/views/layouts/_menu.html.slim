@@ -1,21 +1,18 @@
-nav.navbar.navbar-default.text-center
-	.container-fluid
-		.navbar-header
-			button.navbar-toggle.collapsed type='button' data={toggle: 'collapse', target: '#menu'} aria-expanded='false'
-				span.sr-only Toggle navigation
-				span.icon-bar
-				span.icon-bar
-				span.icon-bar
-			a.navbar-brand href=root_path Oursudoku
-		#menu.collapse.navbar-collapse
-			ul.nav.navbar-nav.navbar-left
-				li class=(current_page?(sudoku_solver_path) ? 'active' : '')
-					= link_to 'Solver', sudoku_solver_path
-			ul.nav.navbar-nav.navbar-right
-				- if user_signed_in?
-					li class=(current_page?(edit_user_registration_path) ? 'active' : '')
-						= link_to 'My account', edit_user_registration_path, class: 'mr-5'
-					= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-danger navbar-btn'
-				- else
-					= link_to 'Sign in', new_user_session_path, class: 'btn btn-success navbar-btn mr-5'
-					= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary navbar-btn'
+nav.navbar.navbar-light.bg-faded.text-center
+	button.navbar-toggler.hidden-sm-up type='button' data={toggle: 'collapse', target: '#menu'}
+		| &#9776;
+	a.navbar-brand href=root_path Oursudoku
+	#menu.collapse.navbar-toggleable-xs
+		ul.nav.navbar-nav
+			li class=(('nav-item ') + (current_page?(sudoku_solver_path) ? 'active' : ''))
+				= link_to 'Solver', sudoku_solver_path, class: 'nav-link'
+			- if user_signed_in?
+				li class=(('nav-item ') + (current_page?(edit_user_registration_path) ? 'active' : ''))
+					= link_to 'My account', edit_user_registration_path, class: 'nav-link'
+				= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-danger nav-link'
+			- else
+				.pull-xs-right
+					li class='nav-item'
+						= link_to 'Sign in', new_user_session_path, class: 'btn btn-success'
+					li class='nav-item'
+						= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary'

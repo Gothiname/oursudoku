@@ -59,13 +59,13 @@ var SudokuSolverParams = React.createClass({
   },
   render: function() {
     return (
-      <Formsy.Form className="SudokuSolverParams form-inline text-center"
+      <Formsy.Form className="SudokuSolverParams form-inline text-xs-center"
         onValidSubmit={this.handleSubmit}>
         <Input type="number" name="depth" id="depth" min={2} max={4}
           label="Depth"
           value={this.state.depth}
-          validations="isMoreThan:1"/>
-        <button type="submit" className="btn btn-default">Set</button>
+          validations="isMoreThan:1,isLessThan:5"/>
+        <button type="submit" className="btn btn-default">GO</button>
       </Formsy.Form>
     );
   }
