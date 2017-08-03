@@ -18,11 +18,12 @@ class SudokuController < ApplicationController
   end
 
   def solved
-    depth = params[:depth].to_i
-    @sudoku = Sudoku.new (construct_string_params depth), depth
+    @depth = params[:depth].to_i
+    @sudoku = Sudoku.new (construct_string_params @depth), @depth
+    @sudoku_initial = Sudoku.new (construct_string_params @depth), @depth
     if @sudoku.has_error?
       flash[:error] = @sudoku.error_msg
-      return redirect_to sudoku_solver_path(depth: depth)
+      return redirect_to sudoku_solver_path(depth: @depth)
     end
     sudoku_manager = SudokuManager.new
     sudoku_manager.solve @sudoku

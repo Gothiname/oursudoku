@@ -1,7 +1,6 @@
-| Possibilities = 
-= @sudoku.possibilities
-br
-br
-- @sudoku.grid.each do |line|
-	= line.inspect
-	br
+.sudoku-container
+  .sudoku-grid class=("depth-#{@depth}")
+    - @sudoku.grid.each_with_index do |line, i|
+      .line
+        - line.each_with_index do |cell, j|
+          = text_field_tag nil, nil, maxlength: 1, size: 1, class: "cell text-center #{(@sudoku_initial.grid[i][j] == cell ? 'original' : 'solved')}", value: cell, disabled: true
